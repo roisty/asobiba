@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-1">
+    <title>Stopwatch</title>
+    <script>
+        if (window.top.location.href == window.location.href) {
+            window.write("<a href='https://yama-can.github.io/himajinnoasobiba>HIMAJINNOASOBIBA</a>'");
+        }
+        var time = 0;
+
+        function stopwatch() {
+            window.setTimeout(function() {
+                time++;
+                document.querySelector(".time").innerText = time + "秒";
+                stopwatch();
+            }, 1000)
+        }
+    </script>
+</head>
+
+<body>
+    <h1 class="time"></h1>
+    <button class="start" onclick="time = 0;stopwatch();">スタート</button>
+</body>
+
+</html>
