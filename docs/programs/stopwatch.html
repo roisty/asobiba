@@ -74,28 +74,39 @@
             <h3>HTML</h3>
             <pre class="line-numbers">
               <code class="language-html">
-                &lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;ja&quot;&gt;
+                <!--<!DOCTYPE html>
+<html lang="ja">
 
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-1&quot;&gt;
-    &lt;title&gt;Stopwatch&lt;/title&gt;
-    &lt;script src=&quot;/main.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-1">
+    <title>Stopwatch</title>
+    <script>
+        if (window.top.location.href == window.location.href) {
+            document.write("<a href='https://asobiba.roisty.com/>ASOBIBA</a>'");
+        }
+        var time = 0;
 
-&lt;body&gt;
-    &lt;h1 class=&quot;time&quot;&gt;&lt;/h1&gt;
-    &lt;button class=&quot;start&quot; onclick=&quot;time = 0;stopwatch();&quot;&gt;スタート&lt;/button&gt;
-&lt;/body&gt;
+        function stopwatch() {
+            window.setTimeout(function() {
+                time++;
+                document.querySelector(".time").innerText = time + "秒";
+                stopwatch();
+            }, 1000)
+        }
+    </script>
+</head>
 
-&lt;/html&gt;
+<body>
+    <h1 class="time"></h1>
+    <button class="start" onclick="time = 0;stopwatch();">スタート</button>
+</body>
+
+</html>-->
               </code>
             </pre>
             <h3>JavaScript</h3>
-            <pre class="line-numbers"><code class="language-js">
-              var time = 0;
-
+            <pre class="line-numbers"><code class="language-js">var time = 0;
 function stopwatch() {
   window.setTimeout(function() {
     time++;
