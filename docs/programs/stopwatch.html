@@ -72,27 +72,26 @@
             </p>
             <h2>ソースコード</h2>
             <h3>HTML</h3>
-            <pre class="line-numbers">
-              <code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;ja&quot;&gt;
-
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-1&quot;&gt;
-    &lt;title&gt;Stopwatch&lt;/title&gt;
-    &lt;script src=&quot;/main.js&quot;&gt;&lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-    &lt;h1 class=&quot;time&quot;&gt;&lt;/h1&gt;
-    &lt;button class=&quot;start&quot; onclick=&quot;time = 0;stopwatch();&quot;&gt;スタート&lt;/button&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;
-              </code>
-            </pre>
+            
+            <script type="text/plain" class="language-html">
+<!DOCTYPE html>
+  <html lang="ja">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-1">
+      <title>Stopwatch</title>
+      <script src="main.js">&lt;/script>
+    </head>
+    
+    <body>
+      <h1 class="time"></h1>
+      <button class="start" onclick="time = 0;stopwatch();">スタート</button>
+    </body>
+</html>
+            </script>
             <h3>JavaScript</h3>
-            <pre class="line-numbers"><code class="language-js">var time = 0;
+            <script type="text/plain" class="language-js">
+var time = 0;
 
 function stopwatch() {
   window.setTimeout(function() {
@@ -101,9 +100,6 @@ function stopwatch() {
     stopwatch();
   }, 1000)
 }
-          </code></pre>
-            <script type="text/plain" class="language-html">
-                &lt;/script>
             </script>
         </section>
     </div>
