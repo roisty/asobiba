@@ -715,5 +715,7 @@ kbd {
     width: 100%;
     border: none;
     height: 100%;
+    border: 1px single #000;
+    border-radius: 10px;
   }
 }
