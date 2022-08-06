@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-1">
+    <title>Stopwatch</title>
+    <script>
+        let elements;
+
+        function setup() {
+            elements = [
+                document.querySelector('.e1'),
+                document.querySelector('.e2'),
+                document.querySelector('.e3')
+            ]
+        }
+        const result = ['グー', 'チョキ', 'パー'];
+        const judgment = [
+            [1, 0, 2],
+            [2, 1, 0],
+            [0, 2, 1]
+        ];
+
+        function rps(select) {
+            const random = Math.floor(Math.random() * (3));
+            elements[0].innerText = "君が選んだのは" + result[select];
+            elements[1].innerText = "機械が選んだのは" + result[random];
+            if (judgment[select][random] == 0) elements[2].innerText = "結果は君の勝ちだよ。おめでとう！！";
+            if (judgment[select][random] == 1) elements[2].innerText = "結果はあいこだよ。もう一回やってみよう。";
+            if (judgment[select][random] == 2) elements[2].innerText = "結果は君の負けだよ…もう一回やって勝利しよう！！";
+        }
+    </script>
+</head>
+
+<body onload="setup();">
+    <h1 class="e1">下から選んでね！！</h1>
+    <h1 class="e2">ここに機械が選んだ数が表示されるよ。</h1>
+    <h1 class="e3">ここに結果が表示されるよ。</h1>
+    <button onclick="rps(0);">グー</button>
+    <button onclick="rps(1);">チョキ</button>
+    <button onclick="rps(2);">パー</button>
+</body>
+
+</html>

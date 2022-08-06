@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/prism.css">
+    <script src="/assets/js/prism.js"></script>
+    <link rel="icon" href="/assets/images/favicon.png">
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+    <title>じゃんけん | ASOBIBA</title>
+    <meta name="generator" content="Jekyll v3.9.2" />
+    <meta property="og:title" content="じゃんけん装置 | ASOBIBA" />
+    <meta property="og:locale" content="ja" />
+    <meta name="description" content="ASOBIBAのじゃんけん装置" />
+    <meta property="og:description" content="ASOBIBAのじゃんけん装置" />
+    <link rel="icon" href="/assets/images/favicon.png">
+    <meta property="og:url" content="https://asobiba.roisty.com/" />
+    <meta property="og:site_name" content="ASOBIBA" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="ASOBIBAとは" />
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "description": "ASOBIBAのじゃんけん装置",
+            "headline": "ASOBIBAとは",
+            "name": "asobiba",
+            "url": "https://asobiba.roisty.com/"
+        }
+    </script>
+    <!-- End Jekyll SEO tag -->
+
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+    <!-- Setup Google Analytics -->
+
+
+
+    <!-- You can set your favicon here -->
+    <!-- link rel="shortcut icon" type="image/x-icon" href="/ASOBIBA/favicon.ico" -->
+
+    <!-- end custom head snippets -->
+
+</head>
+
+<body lang="ja">
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+            <h1 id="project_title">ASOBIBA</h1>
+            <h2 id="project_tagline">ASOBIBAのじゃんけん装置</h2>
+            <a href="/">ホーム</a>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+        <section id="main_content" class="inner">
+            <p>HIBAJINNOASOBIBAは、Roistyの人が色々なプログラムを投稿して遊ぶところです。 問題は
+                <a href="https://github.com/Yama-Can/himajinnoasobiba/issues">Github</a>で対応します。</p>
+            <h1>じゃんけん装置（可能な限り簡単なスクリプトで作成）</h1>
+            <iframe src="../projects/stopwatch.html"></iframe>
+            <h2>仕組み</h2>
+            <p>
+                3つのボタン「グー」、「チョキ」、「パー」が押されたとき、それぞれ「じゃんけん関数」に 0,1,2の引数を渡します。<br> 引数というのは、関数を呼び出す側が「関数名(引数1,引数2…)」のように、関数にデータを渡すために作られているものです。
+
+                <br> 関数は、以下のコードで引数を取得できます。
+                <br>
+                <font style="color:blue">function</font> test(
+                <font style="color:skyblue">a</font>,
+                <font style="color:skyblue">b</font>…)
+                <font style="color:yellow">{</font>
+                <font style="color:green">//処理</font>
+                <font style="color:yellow">}</font><br> この例は、test("GO","GOOD");と呼び出されたときに、変数aにGOが、変数BにGOODが入るような例です。<br>
+                今回は、変数selectに0,1,2のどれかを渡しています。<br>
+                <br>
+                次に、勝ち負けリストを用意します。<br>
+                勝ち負けリストは、配列を使いました。<br>
+                配列とは、[[0,1,2],[1,2,3],[2,3,4]]のように、数値を簡単に取得できるようにする仕組みです。<br>
+                配列のは、[0,1,2]のようにも定義でき、["a","b","c"]のようにも定義できます。<br>
+                今回は、勝ち、あいこ、負けの順で、0,1,2とします。<br>
+                そうすると、[[1, 0, 2],[2, 1, 0],[0, 2, 1]]のような配列になります。これをjudgmentとします。<br>
+                配列の中身の取得は「配列名[何個目か]]」の形で取得できるので、judgment[select][機械のランダム]で勝ち、負け、あいこを調べられます。<br>
+                <br>
+                お疲れさまでした。あと少しです。<br>
+                最後に、ランダムな数を取得する方法について調べます。<br>
+                ランダムな数は、以下のコードで取得できます。<br>
+                Math.random()<br>
+                でも、これだと0~1のランダムな数が出てくるので、「勝ち」「負け」「あいこ」の数である3をかけて、切り捨てます。<br>
+                その結果、コードは以下の通りになります。<br>
+                Math.floor(Math.random() * (3));<br>
+                これで完成です。<br>
+                最後に実際のコードをご覧ください。
+            </p>
+            <h2>ソースコード</h2>
+            <h3>HTML</h3>
+            <script type="text/plain" class="language-html">
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-1">
+    <title>Stopwatch</title>
+    <script src="main.js">&lt;/script>
+</head>
+
+<body onload="setup();">
+    <h1 class="e1">下から選んでね！！</h1>
+    <h1 class="e2">ここに機械が選んだ数が表示されるよ。</h1>
+    <h1 class="e3">ここに結果が表示されるよ。</h1>
+    <button onclick="rps(0);">グー</button>
+    <button onclick="rps(1);">チョキ</button>
+    <button onclick="rps(2);">パー</button>
+</body>
+
+</html>
+                    </script>
+                    <h3>JavaScript</h3>
+                    <script type="text/plain" class="language-js">
+let elements;
+function setup() {
+  elements = [
+    document.querySelector('.e1'),
+    document.querySelector('.e2'),
+    document.querySelector('.e3')
+  ]
+}
+const result = ['グー', 'チョキ', 'パー'];
+const judgment = [ [1, 0, 2], [2, 1, 0], [0, 2, 1] ];
+function rps(select){
+  const random = Math.floor(Math.random() * (3));
+  elements[0].innerText = "君が選んだのは" + result[select];
+  elements[1].innerText = "機械が選んだのは" + result[random];
+  if (judgment[select][random] == 0) elements[2].innerText = "結果は君の勝ちだよ。おめでとう！！";
+  if (judgment[select][random] == 1) elements[2].innerText = "結果はあいこだよ。もう一回やってみよう。";
+  if (judgment[select][random] == 2) elements[2].innerText = "結果は君の負けだよ…もう一回やって勝利しよう！！";
+}
+                    </script>
+                    <iframe src="/projects/rps/rps1"></iframe>
+                    <p>でも、これだと勝ち負けがわかりづらいので、色を付けるようにしました。</p>
+                    <iframe src="/projects/rps/rps1"></iframe>
+                    <p>一応、ダウンロードリンクを載せておきます。</p>
+                    <a href="/projects/rps/rps1" download="rps.html">色付け前（本文に記述されているコード）</a>
+                    <a href="/projects/rps/rps2" download="rps.html">色付け後</a>
+        </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+        <footer class="inner">
+
+            <p class="copyright">ASOBIBA は <a href="https://github.com/Yama-Can">Yama-Can</a>により提供されています。</p>
+
+            <p><a href="https://github.com/Yama-Can/himajinnoasobiba/">GitHub</a> でソースコードを見る</p>
+        </footer>
+    </div>
+</body>
+
+</html>
