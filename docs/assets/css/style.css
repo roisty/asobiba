@@ -711,4 +711,9 @@ kbd {
     font-size: 12px;
     content: "Projects";
   }
+  iframe {
+    width: 100%;
+    border: none;
+    height: 80vh;
+  }
 }
