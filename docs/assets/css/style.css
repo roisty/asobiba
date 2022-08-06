@@ -712,9 +712,9 @@ kbd {
     content: "Projects";
   }
   iframe {
-    width: 100%;
+    width: -webkit-fill-available;
     border: none;
-    height: 100%;
+    height: 60vh;
     border: 1px single #000;
     border-radius: 10px;
   }
