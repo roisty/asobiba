@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-1">
     <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/assets/css/prism.css">
+    <script src="/assets/js/prism.css"></script>
     <link rel="icon" href="/assets/images/favicon.png">
     <!-- Begin Jekyll SEO tag v2.8.0 -->
     <title>ストップウォッチ | himajinnoasobiba</title>
@@ -65,8 +67,43 @@
             <iframe src="../projects/stopwatch.html"></iframe>
             <h2>仕組み</h2>
             <p>
-                ボタンが押されたとき、一秒待ち、表示する数字を1上げる関数Stopwatchを作る。 Stopwatchの中で、数字を1上げた後、またStopwatchを呼び出すようにする。 それにより、Stopwatchが1秒ごとにループし、ストップウォッチができる。
+                ボタンが押されたとき、一秒待ち、表示する数字を1上げる関数Stopwatchを作る。 <br> Stopwatchの中で、数字を1上げた後、またStopwatchを呼び出すようにする。 <br> それにより、Stopwatchが1秒ごとにループし、ストップウォッチができる。
+                <br>
             </p>
+            <h2>ソースコード</h2>
+            <h3>HTML</h3>
+            <pre class="line-numbers">
+              <code class="language-html">
+                &lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;ja&quot;&gt;
+
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-1&quot;&gt;
+    &lt;title&gt;Stopwatch&lt;/title&gt;
+    &lt;script src=&quot;/main.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1 class=&quot;time&quot;&gt;&lt;/h1&gt;
+    &lt;button class=&quot;start&quot; onclick=&quot;time = 0;stopwatch();&quot;&gt;スタート&lt;/button&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+              </code>
+            </pre>
+            <h3>JavaScript</h3>
+            <pre class="line-numbers"><code class="language-js">
+              var time = 0;
+
+function stopwatch() {
+  window.setTimeout(function() {
+    time++;
+    document.querySelector(&quot;.time&quot;).innerText = time + &quot;秒&quot;;
+    stopwatch();
+  }, 1000)
+}
+          </code></pre>
         </section>
     </div>
 
