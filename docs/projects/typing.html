@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script>
+        const typers = ["test", "index", "script", "I am good programmer", "I like programming", "I do my homework everyday", "program", "Go", "html", "css", "function", "string", "int", "var", "const", "let", "home", "father", "mother", "teacher", "child", "children", "grandfather", "grandmother"];
+        var time = 0;
+        var doing = false;
+        var pass = false;
+        const timer = {
+            reset: function() {
+                time = 0;
+            },
+            start: function() {
+                if (!doing) {
+                    plus();
+                }
+            },
+            stop: function(){
+                doing = false;
+            },
+            plus: function() {
+                if (doing) {
+                    window.setTimeout(function() {
+                        time++;
+                        timer.plus();
+                    }, 1000);
+                }
+            }
+        }
+        function newWord(){
+            document.querySelector("#start").disabled = true;
+            document.querySelector("#pass").disabled = false;
+            var now = typers[Math.floor(Math.random() * typers.length)];
+            document.querySelector("p").innerHTML = "<span style='color:black'>入力する文字：</span>" + now;
+        }
+        function start() {
+            newWord();
+            while(!pass);
+            pass = false;
+            start();
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelector("#start").addEventListener("click", start);
+            document.querySelector("#pass").addEventListener("click", function(){pass = true});
+        })
+    </script>
+</head>
+
+<body>
+    <h1>タイピング</h1>
+    <button id="start">スタート</button>
+    <p style="color:red;">入力する文字</p>
+    <input type="text" class="input">
+    <button id="pass" disabled>パス</button>
+</body>
+
+</html>
