@@ -715,7 +715,7 @@ kbd {
 
 iframe {
   width: -webkit-fill-available;
-  border: none;
+  border: 1px single black;
   height: 60vh;
   border: 1px single #000;
   border-radius: 10px;
